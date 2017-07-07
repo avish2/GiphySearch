@@ -1,4 +1,4 @@
- var topics = ["Dolphin", "Frog", "Turtle", "Dog", "Cat", "Narwhal", "Beach", "Mountains", "Resort", "Travel", "Luggage", "Dallas Buyers Club", "Interstellar", "Dazed and Confused", "True Detective", "Magic Mike"]
+ var topics = ["Happy", "Sad", "No", "Yes", "Hysterical", "Love", "Hate", "Sob", "Retort", "Laugh Frown", "Sarcasm", "Not Funny", "Partay", "Dazed", "Hypnosis", "Crazy","Hero", "Villan", "Prince", "Princess", "Toy", "Play", "Dance","Sing"]
       ;
         console.log(topics);
       // displayMovieInfo function re-renders the HTML to display the appropriate content
@@ -21,10 +21,10 @@
                     var imageView = results[i].images.fixed_height_small.url;
                     var still = results[i].images.fixed_height_small_still.url;
                         // console.log(imageView);  
-                    var gifImage = $('<img>').attr("src", still).attr('data-animate', imageView).attr('data-still', still);
+                    var gifImage = $('<img>').attr("id", "gifthumb").attr("src", still).attr('data-animate', imageView).attr('data-still', still);
                     gifImage.attr('data-state', 'still');
                     $('#gifs-view').prepend("<div id='area'></div>");
-                    $('#area').prepend(gifImage);
+                    $('#area').append(gifImage);
                     gifImage.on('click', playGif);
                     
                     // pulling the rating
@@ -32,7 +32,9 @@
                             // console.log(rating);
                         var displayRated= $('<p>').text("Rating: " + rating);
                         $('#area').prepend(displayRated);
-            
+                    // var a = $("#area").append("<a id='a'></a>");
+                    // $("#a").prepend("<span class='play'>&#9658;</span>");
+                    // a.on('click', playGif);
                 } //for loop
           console.log(response);
         })
@@ -72,6 +74,7 @@
         event.preventDefault();
         var button = $("#gif-input").val().trim();
         topics.push(button);
+        $("#gif-input").val("");
         renderButtons();
       });
 
