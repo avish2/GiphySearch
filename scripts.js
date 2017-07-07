@@ -4,7 +4,7 @@
       function displayGifList() {
 
         var button = $(this).attr("data-name");
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=6b8dc1367fe7493ca974e1d0de84ff16&limit=10";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=6b8dc1367fe7493ca974e1d0de84ff16&limit=10&rating=g&offset=3";
 
         // Creates AJAX call for the specific button being clicked
         $.ajax({
@@ -14,19 +14,21 @@
 
             var results = response.data;
 
+        $("#gifs-view").empty();
+
                 for ( var i=0; i < results.length; i++) {
                     var imageDiv = $('<div>');
-                    var imageView = results[i].images.fixed_height.url;
-                    var still = results[i].images.fixed_height_still.url;
+                    var imageView = results[i].images.fixed_height_small.url;
+                    var still = results[i].images.fixed_height_small_still.url;
                         // console.log(imageView);  
-                    var gifImage = $('<img>').attr("src", still).attr('data-animate', imageView).attr('data-still', still);
+                    var gifImage = $('<img class="col-md-4">').attr("src", still).attr('data-animate', imageView).attr('data-still', still);
                     gifImage.attr('data-state', 'still');
                     $('#gifs-view').prepend(gifImage);
                     gifImage.on('click', playGif);
                     
                     // pulling the rating
                         var rating = results[i].rating;
-                        var displayRated= $('<p>').text("Rating: " + rating);
+                        var displayRated= $('<p class="col-md-4">').text("Rating: " + rating);
                         $("#gifs-view").prepend(displayRated);
             
                 } //for loop
@@ -73,6 +75,8 @@
 
       // Adding click event listeners to all elements with a class of "button"
       $(document).on("click", ".button", displayGifList());
+
+
 
       // Calling the renderButtons function to display the intial buttons
       renderButtons();

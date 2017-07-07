@@ -5,7 +5,8 @@ form,
 input {
     margin: 4px;
 }
-button {
+button,
+#add-button {
 	border-radius: 8px;
     color: white;
     background-color: teal;
@@ -13,10 +14,13 @@ button {
 #rating {
     display: inline-block;
 }
-#wrapper1 {
+/*#wrapper1 {
 	float:right;
-}
+}*/
 html,
 body {
 	background-color: #efefef;
+}
+#area {
+	display: inline-grid;
 }
