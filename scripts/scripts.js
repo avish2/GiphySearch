@@ -33,7 +33,10 @@
                         var displayRated= $('<p>').text("Rating: " + rating);
                         $('#area').prepend(displayRated);
                     // var a = $("#area").append("<a id='a'></a>");
-                    // $("#a").prepend("<span class='play'>&#9658;</span>");
+                    // var span = $("<span>");
+                    // $("#a").append(span);
+                    // span.html("&#9658");
+                    // span.addClass("play");
                     // a.on('click', playGif);
                 } //for loop
           console.log(response);
