@@ -5,7 +5,7 @@
       function displayGifList() {
 
         var button = $(this).attr("data-name");
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=6b8dc1367fe7493ca974e1d0de84ff16&limit=10&rating=pg&offset=4";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + button + "&api_key=6b8dc1367fe7493ca974e1d0de84ff16&limit=10&rating=pg&offset=4";
 
         // Creates AJAX call for the specific button being clicked
         $.ajax({
